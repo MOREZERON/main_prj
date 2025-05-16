@@ -1,0 +1,92 @@
+﻿<Page x:Class="main_prj.RegisterUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:main_prj"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RegisterUserPage">
+
+    <Grid Background="#F0F2F5">
+        <!-- Центральная форма -->
+        <Border CornerRadius="10" Background="White" Padding="30" Width="400" Height="420"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect Color="#AAA" ShadowDepth="5" BlurRadius="10"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <!-- Заголовок -->
+                <TextBlock Text="Регистрация нового пользователя" 
+                           FontSize="20" FontWeight="Bold" Foreground="#2C3E50" 
+                           HorizontalAlignment="Center"/>
+
+                <TextBlock Text="Введите данные для регистрации" 
+                           FontSize="14" FontStyle="Italic" Foreground="#7F8C8D"
+                           HorizontalAlignment="Center"/>
+
+                <!-- Логин -->
+                <TextBlock Text="Логин" Foreground="#34495E" Margin="0,5,0,0"/>
+                <TextBox x:Name="TxtUsername" 
+                         Height="40" 
+                         Text="Введите логин"
+                         BorderBrush="#BDC3C7" 
+                         BorderThickness="1"
+                         Padding="10"
+                         VerticalContentAlignment="Center"/>
+
+                <!-- Пароль -->
+                <TextBlock Text="Пароль" Foreground="#34495E" Margin="0,5,0,0"/>
+                <PasswordBox x:Name="PwbPassword" 
+                             Height="40"
+                             BorderBrush="#BDC3C7"
+                             BorderThickness="1"
+                             Padding="10"
+                             VerticalContentAlignment="Center"/>
+
+                <!-- Роль -->
+                <TextBlock Text="Роль" Foreground="#34495E" Margin="0,5,0,0"/>
+                <ComboBox x:Name="CbRole" 
+                          Height="40"
+                          BorderBrush="#BDC3C7"
+                          BorderThickness="1"
+                          SelectedIndex="0"
+                          IsEditable="False"
+                          ItemsSource="{Binding}"/>
+                
+                
+
+                <!-- Кнопка регистрации -->
+                <Button Content="Зарегистрировать"
+                        Height="40"
+                        Background="#2ECC71"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontSize="16"
+                        Click="BtnRegister_Click"
+                        Margin="0,10,0,0">
+                    <Button.Effect>
+                        <DropShadowEffect Color="#AAA" ShadowDepth="3" BlurRadius="10"/>
+                    </Button.Effect>
+                </Button>
+                
+                
+
+                <!-- Кнопка назад -->
+                <Button Content="Назад"
+                        Height="40"
+                        Background="#95A5A6"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontSize="16"
+                        Click="BtnBack_Click"
+                        Margin="0,5,0,0">
+                    <Button.Effect>
+                        <DropShadowEffect Color="#AAA" ShadowDepth="3" BlurRadius="10"/>
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

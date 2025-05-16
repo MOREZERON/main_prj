@@ -1,0 +1,34 @@
+﻿<Window x:Class="main_prj.AddRejectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:main_prj"
+        mc:Ignorable="d"
+        Title="Добавить брак" Height="400" Width="500">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Партия:" Grid.Row="0" Margin="0,5"/>
+        <ComboBox x:Name="cbProductionRun" Grid.Row="1" MinHeight="30"/>
+
+        <TextBlock Text="Дефект:" Grid.Row="2" Margin="0,5"/>
+        <ComboBox x:Name="cbDefect" Grid.Row="3" MinHeight="30"/>
+
+        <TextBlock Text="Количество брака:" Grid.Row="4" Margin="0,5"/>
+        <TextBox x:Name="txtQuantity" Grid.Row="5" MinHeight="30"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="6" Margin="0,10,0,0">
+            <Button Content="Сохранить" Click="BtnSave_Click" Width="100" Margin="0,0,10,0"/>
+            <Button Content="Назад" Click="BtnBack_Click" Width="100"/>
+        </StackPanel>
+    </Grid>
+</Window>

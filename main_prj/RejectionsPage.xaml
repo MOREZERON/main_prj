@@ -1,0 +1,29 @@
+﻿<Page x:Class="main_prj.RejectionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:main_prj"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RejectionsPage">
+
+    <Grid Margin="10" Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Добавить брак" Click="BtnAddRejection_Click" Width="120" Margin="5"/>
+            <Button Content="Обновить" Click="BtnRefresh_Click" Width="100" Margin="5"/>
+            <Button Content="Назад" Click="BtnBack_Click" Width="100" Margin="5"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" x:Name="dgRejections" 
+              AutoGenerateColumns="True" 
+              CanUserAddRows="False"
+              IsReadOnly="True"
+              Margin="0,10,0,0"/>
+    </Grid>
+</Page>

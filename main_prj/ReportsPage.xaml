@@ -1,0 +1,105 @@
+﻿<Page x:Class="main_prj.ReportsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:main_prj"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ReportsPage">
+
+    <Grid Background="#F0F2F5">
+        <!-- Центральная панель -->
+        <Border CornerRadius="10" Background="White" Padding="20" Width="800" Height="500"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect Color="#AAA" ShadowDepth="5" BlurRadius="10"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Кнопки -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Заголовок -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Подзаголовок -->
+                    <RowDefinition Height="*"/>
+                    <!-- Таблица -->
+                </Grid.RowDefinitions>
+
+                <!-- Кнопки управления -->
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,10,0,10" HorizontalAlignment="Center">
+                    <Button Content="Добавить проверку качества"
+                            Width="200" Height="35"
+                            Background="#3498DB" Foreground="White"
+                            BorderThickness="0"
+                            
+                            Click="BtnAddQualityCheck_Click"
+                            Margin="0,0,10,0">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#AAA" ShadowDepth="3" BlurRadius="10"/>
+                        </Button.Effect>
+                    </Button>
+
+                    <Button Content="Отчёт по браку"
+                            Width="200" Height="35"
+                            Background="#F39C12" Foreground="White"
+                            BorderThickness="0"
+                            
+                            Click="BtnDefectsReport_Click"
+                            Margin="0,0,10,0">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#AAA" ShadowDepth="3" BlurRadius="10"/>
+                        </Button.Effect>
+                    </Button>
+
+                    <Button Content="Назад"
+                            Width="100" Height="35"
+                            Background="#95A5A6" Foreground="White"
+                            BorderThickness="0"
+                            
+                            Click="BtnBack_Click">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#AAA" ShadowDepth="3" BlurRadius="10"/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
+
+                <!-- Заголовок -->
+                <TextBlock Text="Готовые к отправке партии" 
+                           FontSize="20" FontWeight="Bold" Foreground="#2C3E50"
+                           HorizontalAlignment="Center"
+                           Grid.Row="1"/>
+
+                <TextBlock Text="Список проверенных и одобренных партий" 
+                           FontSize="14" FontStyle="Italic" Foreground="#7F8C8D"
+                           HorizontalAlignment="Center"
+                           Margin="0,5"
+                           Grid.Row="2"/>
+
+                <!-- Таблица -->
+                <DataGrid x:Name="ApprovedRunsGrid" 
+          Grid.Row="3"
+          Margin="10"
+          AutoGenerateColumns="False"
+          CanUserAddRows="False"
+          HeadersVisibility="Column"
+          RowHeight="30"
+          BorderBrush="#BDC3C7"
+          Background="White"
+          SelectionMode="Single"
+          SelectedItem="{Binding SelectedItem}">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер партии" Binding="{Binding BatchNumber}" />
+                        <DataGridTextColumn Header="Количество" Binding="{Binding QuantityProduced}" />
+                        <DataGridTextColumn Header="Дата производства" Binding="{Binding ProducedAt, StringFormat=dd.MM.yyyy}" />
+                        <DataGridTextColumn Header="Оценка качества" Binding="{Binding QualityRating}" />
+                        <DataGridTextColumn Header="Решение" Binding="{Binding Resolution}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

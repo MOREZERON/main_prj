@@ -1,0 +1,122 @@
+﻿<Window x:Class="main_prj.AddQualityCheckWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:main_prj"
+        mc:Ignorable="d"
+        Title="AddQualityCheckWindow" Height="450" Width="800">
+    <Grid Background="#F0F2F5">
+        <!-- Центральная форма -->
+        <Border CornerRadius="10" Background="White" Padding="30" Width="400" Height="420"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect Color="#AAA" ShadowDepth="5" BlurRadius="10"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Заголовок -->
+                <TextBlock Text="Добавление проверки качества" 
+                           FontSize="20" FontWeight="Bold" Foreground="#2C3E50"
+                           HorizontalAlignment="Center"
+                           Grid.Row="0"/>
+
+                <TextBlock Text="Выберите партию и оцените качество" 
+                           FontSize="14" FontStyle="Italic" Foreground="#7F8C8D"
+                           HorizontalAlignment="Center"
+                           Margin="0,5"
+                           Grid.Row="1"/>
+
+                <!-- Выбор партии -->
+                <TextBlock Text="Партия:" Grid.Row="2" Margin="0,10,0,0" Foreground="#34495E"/>
+                <ComboBox x:Name="CbProductionRun" 
+                          Grid.Row="3" 
+                          Height="35"
+                          BorderBrush="#BDC3C7"
+                          BorderThickness="1"
+                          
+                          IsEditable="False"
+                          DisplayMemberPath="BatchNumber"
+                          SelectedValuePath="RunID"
+                          SelectionChanged="CbProductionRun_SelectionChanged"/>
+
+                <!-- Оценка качества -->
+                <TextBlock Text="Оценка качества:" Grid.Row="4" Margin="0,10,0,0" Foreground="#34495E"/>
+                <ComboBox x:Name="CbQualityRating" 
+                          Grid.Row="5" 
+                          Height="35"
+                          BorderBrush="#BDC3C7"
+                          BorderThickness="1"
+                          
+                          ItemsSource="{Binding}"
+                          IsEditable="False"
+                          SelectedIndex="0"
+                          Margin="0,5"/>
+
+                <!-- Решение по партии -->
+                <TextBlock Text="Решение:" Grid.Row="6" Margin="0,15,0,5" Foreground="#34495E"/>
+
+                <!-- Кнопки решения -->
+                <StackPanel x:Name="ResolutionButtonsPanel"
+                            Grid.Row="7" 
+                            Orientation="Horizontal" 
+                             
+                            Margin="0,5,0,15"
+                            HorizontalAlignment="Center">
+
+                    <Button Content="Готово к отправке"
+                            Name="BtnApprove"
+                            Width="180" Height="35"
+                            Background="#2ECC71" Foreground="White"
+                            BorderThickness="0"
+                            
+                            Click="BtnApprove_Click"/>
+
+                    <Button Content="На доработку"
+                            Name="BtnReject"
+                            Width="180" Height="35"
+                            Background="#E74C3C" Foreground="White"
+                            BorderThickness="0"
+                            
+                            Click="BtnReject_Click"/>
+                </StackPanel>
+
+                <!-- Кнопки сохранения -->
+                <StackPanel Orientation="Horizontal" Grid.Row="6" HorizontalAlignment="Right" Margin="0,102,0,0">
+                    <Button Content="Сохранить"
+                            Width="100" Height="35"
+                            Background="#3498DB" Foreground="White"
+                            BorderThickness="0"
+                            
+                            Click="BtnSave_Click"
+                            Margin="0,0,10,0">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#AAA" ShadowDepth="3" BlurRadius="10"/>
+                        </Button.Effect>
+                    </Button>
+
+                    <Button Content="Отмена"
+                            Width="100" Height="35"
+                            Background="#95A5A6" Foreground="White"
+                            BorderThickness="0"
+                            
+                            Click="BtnCancel_Click">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#AAA" ShadowDepth="3" BlurRadius="10"/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

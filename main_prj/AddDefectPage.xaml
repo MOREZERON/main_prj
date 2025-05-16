@@ -1,0 +1,118 @@
+﻿<Window x:Class="main_prj.AddDefectPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:main_prj"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="AddDefectPage">
+
+    <Grid Background="#F0F2F5">
+        <!-- Центральная панель -->
+        <Border CornerRadius="10" Background="White" Padding="30" Width="800" Height="500"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect Color="#AAA" ShadowDepth="5" BlurRadius="10"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Заголовок -->
+                <TextBlock Text="Добавление новых дефектов" 
+                           FontSize="20" FontWeight="Bold" Foreground="#2C3E50"
+                           HorizontalAlignment="Center"
+                           Grid.Row="0"/>
+
+                <TextBlock Text="Введите название и описание дефекта" 
+                           FontSize="14" FontStyle="Italic" Foreground="#7F8C8D"
+                           HorizontalAlignment="Center"
+                           Margin="0,5"
+                           Grid.Row="1"/>
+
+                <!-- Форма добавления дефекта -->
+                <StackPanel Orientation="Vertical" Grid.Row="2">
+
+                    <TextBox x:Name="TxtDefectName" 
+             Text="Название дефекта"
+             Height="39"
+             BorderBrush="#BDC3C7"
+             BorderThickness="1"
+             Padding="10"
+             GotFocus="TxtDefectName_GotFocus"
+             LostFocus="TxtDefectName_LostFocus"/>
+
+                    <TextBox x:Name="TxtDefectDescription" 
+             Text="Описание дефекта (необязательно)"
+             Height="39"
+             AcceptsReturn="True"
+             TextWrapping="Wrap"
+             BorderBrush="#BDC3C7"
+             BorderThickness="1"
+             Padding="10"
+             GotFocus="TxtDefectDescription_GotFocus"
+             LostFocus="TxtDefectDescription_LostFocus"/>
+
+                    <!-- Кнопки -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                        <Button Content="Добавить дефект"
+                Width="150" Height="35"
+                Background="#3498DB" Foreground="White"
+                BorderThickness="0"
+                FontSize="16"
+                
+                Click="BtnAddDefect_Click">
+                            <Button.Effect>
+                                <DropShadowEffect Color="#AAA" ShadowDepth="3" BlurRadius="10"/>
+                            </Button.Effect>
+                        </Button>
+
+                        <!-- Отмена -->
+                        <Button Content="Отмена"
+                Width="100" Height="35"
+                Background="#95A5A6" Foreground="White"
+                BorderThickness="0"
+                FontSize="16"
+                
+                Click="BtnCancel_Click"
+                Margin="10,0,0,0">
+                            <Button.Effect>
+                                <DropShadowEffect Color="#AAA" ShadowDepth="3" BlurRadius="10"/>
+                            </Button.Effect>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Список дефектов -->
+                <ScrollViewer Grid.Row="3" Margin="0,10,0,0">
+                    <DataGrid x:Name="DefectsGrid" 
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              ItemsSource="{Binding}"
+                              HeadersVisibility="Column"
+                              RowHeight="30"
+                              BorderBrush="#BDC3C7"
+                              Background="White"
+                              HorizontalGridLinesBrush="#ECF0F1"
+                              VerticalGridLinesBrush="#ECF0F1"
+                             
+                              SelectionMode="Single"
+                              SelectedItem="{Binding SelectedDefect}">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding DefectID}" Width="50"/>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*" />
+                            <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
